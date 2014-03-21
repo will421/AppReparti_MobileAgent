@@ -1,8 +1,15 @@
 package jus.aor.mobilagent.kernel;
 
+import java.net.URI;
+import java.net.URISyntaxException;
+
 import jus.aor.mobilagent.kernel.BAMAgentClassLoader;
 
 public class Agent implements _Agent {
+
+	private Route route;
+	private String serverName;
+	
 
 	@Override
 	public void run() {
@@ -18,7 +25,13 @@ public class Agent implements _Agent {
 
 	@Override
 	public void init(AgentServer agentServer, String serverName) {
-		// TODO Auto-generated method stub
+		this.serverName = serverName;
+		try {
+			route = new Route(new Etape(new URI(serverName),_Action.NIHIL));
+		} catch (URISyntaxException e) {
+			e.printStackTrace();
+		}
+		
 		
 	}
 
@@ -27,6 +40,10 @@ public class Agent implements _Agent {
 			String serverName) {
 		// TODO Auto-generated method stub
 		
+	}
+
+	protected _Action retour() {
+		return _Action.NIHIL;
 	}
 
 }

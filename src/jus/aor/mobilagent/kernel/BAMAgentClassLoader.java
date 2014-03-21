@@ -1,5 +1,7 @@
 package jus.aor.mobilagent.kernel;
 
-public class BAMAgentClassLoader {
+public class BAMAgentClassLoader extends ClassLoader {
 
+	
+	
 }
